@@ -1,0 +1,109 @@
+<div class="chat-nav ">
+
+
+
+
+    <div class="chat-nav p-4">
+        <div class="nav-left nav-chat01" [class.ar]="isRTL">
+            <img src="../../../assets/logoHamad.png" alt="Batelco Logo" class="logo imgChat">
+            <div class="nav-right gap-2 " [class.ar]="isRTL">
+
+
+                <div class="d-flex">
+
+                    <div>
+                        <div class="language-select btn-nav ">
+                            <select [ngModel]="currentLang" (ngModelChange)="switchLanguage($event)"
+                                [ngModelOptions]="{standalone: true}">
+                                <option value="en" class="text-black">🌐 English</option>
+
+                                <option value="ar" class="text-black">🌐 العربية</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-nav btn-nav01" (click)="NewChat()">
+                        <i class="fa-solid fa-plus chatIcon"></i> {{ 'NEW_CHAT' | translate }}
+                    </button>
+                    <button class="btn-nav s" (click)="clearChat()">
+                        <i class="fa-solid fa-x chatIcon"></i> {{ 'END_CHAT' | translate }}
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="chat-container">
+        <div class="chat">
+            <div class="home">
+                <div *ngIf="showSlider" [dir]="isRTL ? 'rtl' : 'ltr'">
+                    <div class="ai-container d-flex align-items-center g-5" [dir]="isRTL ? 'rtl' : 'ltr'">
+                        <img src="../../../assets/Mask group (1).png" alt="AI Avatar" class="logo gap-3 aiAnswer">
+                        <span class="message-textFarah ">{{ 'GREETING_CHAT' | translate: { name: username } }}
+
+                        </span>
+                    </div>
+                    <app-test [dir]="isRTL ? 'rtl' : 'ltr'"> </app-test>
+                    <div class="suggestion">{{"SUGGESTION_TITLE"|translate}}</div>
+                </div>
+            </div>
+
+
+
+            <div class="chat-box" *ngIf="messages.length > 0">
+                <div *ngFor="let msg of messages" class="d-flex"
+                    [ngClass]="{ 'user-msg': msg.sender === 'user', 'ai-msg': msg.sender === 'ai' }" [class.ar]="isRTL">
+
+                    <div class="message" *ngIf="msg.sender === 'ai'" [class.ar]="isRTL">
+                        <img src="../../../assets/Mask group (1).png" alt="AI Avatar" class="logo aiAnswer01" />
+                        <div class="message-container">
+
+                            <div class="bubble-loader" *ngIf="msg.isLoading">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+
+                            <span class="ai" *ngIf="msg.isTyping">{{ msg.text }}</span>
+
+                            <div *ngIf="!msg.isLoading && !msg.isTyping">
+                                <span class="ai">{{ msg.text }}</span>
+                                <span class="time">{{ chatService.Date | date:'hh:mm a dd/MM/yyyy' }}</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ✅ User Message -->
+                    <div class="user-container align-items-end text-end" *ngIf="msg.sender === 'user'">
+                        <div class="user">
+                            <span class="m-0 msgUser">{{ msg.text }}</span>
+                        </div>
+                        <span class="time01">{{ chatService.Date | date:'hh:mm a dd/MM/yyyy' }}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <form (ngSubmit)="sendMessage()" class="formBtn" [dir]="isRTL ? 'rtl' : 'ltr'">
+            <div class="chat-input">
+                <!-- <input type="text" [dir]="isRTL ? 'rtl' : 'ltr'" placeholder="{{ 'btn' | translate }}"
+                    [(ngModel)]="userMessage" name="userInput" class="mx-auto" [disabled]="false" /> -->
+
+
+
+                <textarea [(ngModel)]="userMessage" name="userInput" placeholder="{{ 'btn' | translate }}"
+                    class="chat-textarea" rows="1" [dir]="isRTL ? 'rtl' : 'ltr'" [disabled]="isBotTyping"
+                    (keyup.enter)="sendMessage()"></textarea>
+                <button class="send-btn" type="submit" [disabled]="!userMessage.trim() && !isBotTyping">
+                    <i class="fa-solid" [ngClass]="{
+                    'fa-arrow-up': !isBotTyping,
+                    'fa-circle-stop': isBotTyping
+                  }" (click)="isBotTyping ? stopResponse() : null"></i>
+                </button>
+            </div>
+        </form>
+
+        <!--  -->
+
+    </div>

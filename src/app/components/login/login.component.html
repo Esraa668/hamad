@@ -1,0 +1,88 @@
+<section class="register w-100">
+    <div class="main">
+        <div class="chat-nav p-4">
+            <div class="nav-left">
+                <img src="../../../assets/Mask group.png" alt="Batelco Logo" class="logo" />
+            </div>
+        </div>
+
+        <div class="container text-white mb-5">
+            <div class="greeting-text">
+                <div class="greeting" [dir]="isRTL ? 'rtl' : 'ltr'">{{ 'GREETING' | translate }}</div>
+                <div class="assistant-intro" [dir]="isRTL ? 'rtl' : 'ltr'">{{ 'ASSISTANT_INTRO' | translate }}</div>
+
+                <div class="lang-switcher">
+                    <button (click)="switchLanguage('en')">English</button>
+                    <button (click)="switchLanguage('ar')">العربية</button>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <div class="form-title">{{ 'FORM_TITLE' | translate }}</div>
+
+                <form [formGroup]="loginGroup" (ngSubmit)="handle()">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <input type="text" [placeholder]="'EMAIL_PLACEHOLDER' | translate" formControlName="email"
+                                class="form-control" [dir]="isRTL ? 'rtl' : 'ltr'" />
+                            <div class="error mt-1"
+                                *ngIf="loginGroup.get('email')?.errors && loginGroup.get('email')?.touched">
+                                <p *ngIf="loginGroup.get('email')?.getError('required')" class="m-0">
+                                    <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                    {{ 'EMAIL_REQUIRED' | translate }}
+                                </p>
+                                <p *ngIf="loginGroup.get('email')?.getError('email')" class="m-0">
+                                    <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                    {{ 'EMAIL_INVALID' | translate }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <input type="password" [placeholder]="'PASSWORD_PLACEHOLDER' | translate"
+                                formControlName="password" class="form-control" [dir]="isRTL ? 'rtl' : 'ltr'" />
+                            <div class="error mt-1"
+                                *ngIf="loginGroup.get('password')?.errors && loginGroup.get('password')?.touched">
+                                <p *ngIf="loginGroup.get('password')?.getError('required')" class="m-0">
+                                    <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                    {{ 'PASSWORD_REQUIRED' | translate }}
+                                </p>
+                                <p *ngIf="loginGroup.get('password')?.getError('pattern')" class="m-0">
+                                    <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                    {{ 'PASSWORD_PATTERN' | translate }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error display -->
+
+
+
+
+                    <div class="button-container mt-2">
+                        <button class="submit-btn regBtn01" [disabled]="loginGroup.invalid"
+                            [dir]="isRTL ? 'rtl' : 'ltr'">
+                            {{ 'LOGIN_BTN' | translate }}
+                            <span *ngIf="load"><i class="fas fa-spin fa-spinner"></i></span>
+
+                        </button>
+                        <button class="submit-btn regBtn" routerLink="auth/register" (click)="register()"
+                            [dir]="isRTL ? 'rtl' : 'ltr'">
+                            {{ 'REGISTER_NOW' | translate }}
+                        </button>
+                    </div>
+
+                    <div *ngIf="err" class="error  mt-1" [dir]="isRTL ? 'rtl' : 'ltr'">
+                        <i class="fa-solid fa-triangle-exclamation pe-2"></i>
+                        {{ errLogin }}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="basmaImage mx-auto hi">
+            <img src="../../../assets/Avatar.png" alt="" class="imgBasma" />
+        </div>
+    </div>
+</section>

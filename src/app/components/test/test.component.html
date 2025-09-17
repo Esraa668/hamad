@@ -1,0 +1,33 @@
+<div class="swiper-container d-flex align-items-center justify-content-center gap-4" [attr.dir]="isRTL ? 'rtl' : 'ltr'"
+    *ngIf="swiperVisible">
+    <!-- Custom Button that triggers Swiper native button to slide the carousel  -->
+    <!-- 
+    <button class="arrow arr-right d-flex align-items-center justify-content-center cursor-pointer prev"
+        (click)="slideSwiper('prev')" [disabled]="isBeginning">
+        <i class="fa-solid fa-arrow-right"></i>
+    </button> -->
+
+    <div class="swiper ">
+        <!-- To use Swiper in angular we use the "Swiper element from the docs" that's why we import CUSTOM_ELEMENT_SCHEMA -->
+        <!-- In the swiper container we add the conifguration of the slider like loop, slides per view, navigation button and pagination dots "you can find it the the docs" -->
+        <swiper-container #swiper class="mySwiper" pagination="true" grab-cursor="true" centered-slides="false"
+            [breakpoints]="breakpoints" coverflow-effect-rotate="20" coverflow-effect-stretch="0"
+            coverflow-effect-modifier="1" coverflow-effect-slide-shadows="false" navigation="true">
+
+
+            <swiper-slide *ngFor="let slide of slides let i = index" (click)="onSlideClick(slide.text)">
+                <div class="slide-card object-fit-cover">
+                    <div>
+                        <img [src]="slide.icon" alt="Website Icon" class="slide-icon" />
+                        <p class="slide-text">{{ slide.text }}</p>
+                    </div>
+                </div>
+            </swiper-slide>
+
+        </swiper-container>
+    </div>
+
+
+
+
+</div>

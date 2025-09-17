@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://api.ariflawfirm.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

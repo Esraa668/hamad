@@ -1,0 +1,9 @@
+{
+  "routes": [
+    "/auth",
+    "/auth/register",
+    "/blank",
+    "/blank/chat",
+    "/blank/test"
+  ]
+}

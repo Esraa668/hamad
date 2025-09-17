@@ -1,0 +1,128 @@
+<section class="register w-100 text-white">
+    <div class="main">
+        <div class="chat-nav p-4">
+            <div class="nav-left">
+                <img src="../../../assets/logoHamad.png" alt="Batelco Logo" class="logo" [class.ar]="isRTL">
+            </div>
+        </div>
+        <div class="container">
+            <div class="greeting-text">
+                <div class="greeting" [dir]="isRTL ? 'rtl' : 'ltr'">{{ 'GREETING' | translate }}</div>
+                <div class="assistant-intro" [dir]="isRTL ? 'rtl' : 'ltr'">{{ 'ASSISTANT_INTRO' | translate }}</div>
+            </div>
+            <div class="form-container">
+                <div [dir]="isRTL ? 'rtl' : 'ltr'">
+                    <div class="form-title">{{ 'FORM_TITLE' | translate }}</div>
+
+                </div>
+                <form [formGroup]="registerGroup" (ngSubmit)="handle()">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control"
+                                    [placeholder]="'USERNAME_PLACEHOLDER' | translate" formControlName="first_name"
+                                    [dir]="isRTL ? 'rtl' : 'ltr'">
+                                <div class="error"
+                                    *ngIf="registerGroup.get('first_name')?.errors && registerGroup.get('first_name')?.touched">
+                                    <p *ngIf="registerGroup.get('first_name')?.getError('required')" class="m-0">
+                                        <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                        {{ 'USERNAME_REQUIRED' | translate }}
+                                    </p>
+                                    <p *ngIf="registerGroup.get('first_name')?.getError('minlength')">
+                                        <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                        {{ 'USERNAME_MINLENGTH' | translate }}
+                                    </p>
+                                    <p *ngIf="registerGroup.get('first_name')?.getError('maxlength')">
+                                        <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                        {{ 'USERNAME_MAXLENGTH' | translate }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" [placeholder]="'EMAIL_PLACEHOLDER' | translate"
+                                    formControlName="email" [dir]="isRTL ? 'rtl' : 'ltr'">
+                                <div class="error"
+                                    *ngIf="registerGroup.get('email')?.errors && registerGroup.get('email')?.touched">
+                                    <p *ngIf="registerGroup.get('email')?.getError('required')" class="m-0 my-1">
+                                        <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                        {{ 'EMAIL_REQUIRED' | translate }}
+                                    </p>
+                                    <p *ngIf="registerGroup.get('email')?.getError('email')" class="m-0 my-1">
+                                        <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                        {{ 'EMAIL_INVALID' | translate }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="form-group">
+
+
+                                <div class="password-container">
+
+
+                                    <input type="tel" class="form-control"
+                                        [placeholder]="'PHONE_PLACEHOLDER' | translate" formControlName="phone"
+                                        [dir]="isRTL ? 'rtl' : 'ltr'" (keydown)="enforcePrefix($event)">
+                                    <div class="error"
+                                        *ngIf="registerGroup.get('phone')?.errors && registerGroup.get('phone')?.touched">
+                                        <p *ngIf="registerGroup.get('phone')?.getError('required')" class="m-0 my-1">
+                                            <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                            {{ 'PHONE_REQUIRED' | translate }}
+                                        </p>
+                                        <p *ngIf="registerGroup.get('phone')?.getError('pattern')" class="error01">
+                                            <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                                            {{ 'PHONE_PATTERN' | translate }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 language-select-container " [class.ar]="isRTL">
+
+
+
+                            <div class="language-select">
+                                <select [ngModel]="currentLang" (ngModelChange)="switchLanguage($event)"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option value="en" class="text-black">🌐 English</option>
+
+                                    <option value="ar" class="text-black">🌐 العربية</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="registration-container flex-column">
+                        <button class="register-button" [class.ar]="isRTL" [ngClass]="{
+                            'btn-invalid': !registerGroup.valid,
+                            'btn-valid': registerGroup.valid
+                          }" [disabled]="registerGroup.invalid" [dir]="isRTL ? 'rtl' : 'ltr'">
+                            {{ 'LOGIN_BTN' | translate }} <span *ngIf="load"><i
+                                    class="fas fa-spin fa-spinner"></i></span>
+                        </button>
+                        <div class="col-md-6 language-select-container01 ">
+                            <div class="language-select">
+                                <select [ngModel]="currentLang" (ngModelChange)="switchLanguage($event)"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option value="en" class="text-black">🌐 English</option>
+                                    <option value="ar" class="text-black">🌐 العربية</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <img [src]="isRTL==false? '../../../assets/hamadEn-removebg-preview.png' :'../../../assets/rashedArabic-removebg-preview.png'"
+            alt="" class="imgBasma" [class.ar]="isRTL">
+
+    </div>
+</section>

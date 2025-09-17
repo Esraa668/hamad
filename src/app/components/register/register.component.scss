@@ -1,0 +1,515 @@
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid#FFFFFF;
+  border-radius: 8px;
+
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #ffffff !important;
+  // color: red;
+}
+
+.language-select-container {
+  text-align: end;
+
+  // background-color: #565656;
+
+  &.ar {
+    text-align: start;
+  }
+}
+.language-select-container select {
+  background-color: transparent;
+  border: 1px solid #c62929;
+  border-radius: 12px;
+  color: white;
+  padding: 7px 1px;
+}
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+.checkBox-title {
+  width: fit-content;
+}
+.checkbox-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  width: 19px;
+  height: 19px;
+  background-color: transparent;
+  border: 1px solid #cb444a;
+  border-radius: 4px;
+  // margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #cb444a;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox:after {
+  content: "✓";
+  display: block;
+}
+.terms-link {
+  color: white;
+  text-decoration: underline;
+}
+
+.register-button {
+  transition: background-color 0.3s ease;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  &.btn-invalid {
+    background-color: transparent;
+    color: #ffffff;
+
+    cursor: not-allowed;
+  }
+
+  &.btn-valid {
+    background-color: #ffffff;
+    color: #c91041;
+    // color: white;
+    cursor: pointer;
+  }
+}
+
+.language-selector {
+  padding: 3px 14px;
+  background-color: transparent;
+  border: 1px solid #cb444a;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 16px;
+  float: right;
+  margin-right: 10px;
+  // height: 48pxs;
+  margin-top: 3px;
+}
+
+.language-select-container01 select {
+  display: none;
+  background-color: transparent;
+  border: 1px solid #c62929;
+  border-radius: 12px;
+  color: white;
+  padding: 7px 1px;
+}
+.registration-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.esraa {
+  background-color: #c62929;
+}
+.imgBasma {
+  position: absolute;
+  left: 60%;
+  width: auto;
+  height: 100vh;
+  bottom: 0;
+  pointer-events: none;
+  &.ar {
+    left: -1%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .imgBasma {
+    &.ar {
+      left: -22%;
+    }
+  }
+  .main {
+    width: 80%;
+  }
+  .language-selector01 {
+    margin-right: 10px;
+    // float: left;
+    display: none;
+  }
+  .nav-left {
+    margin-top: 3px;
+  }
+  .language-selector {
+    margin-top: 15px;
+    width: auto;
+    float: left;
+  }
+}
+
+@media (max-width: 1200px) {
+  .language-select-container {
+    text-align: left;
+  }
+}
+@media (max-width: 1000px) {
+  .main {
+    width: 90%;
+  }
+  .language-selector {
+    display: none;
+  }
+  .registration-container[_ngcontent-ng-c1748080431] {
+    width: 50%;
+    align-items: flex-start;
+  }
+  .register-button {
+    height: 55%;
+    width: 37%;
+    /* max-width: 340px; */
+    margin: 0;
+    background: #d9d5db;
+    padding: 4px;
+  }
+  .container {
+    padding: 0;
+    width: 75%;
+  }
+  .imgBasma {
+    left: 45%;
+
+    bottom: -46px;
+  }
+
+  .form-control {
+    width: 70% !important;
+  }
+  .imgBasma {
+    &.ar {
+      left: 0%;
+    }
+  }
+  .form-container {
+    padding: 10px 12px;
+  }
+  .language-selector01 {
+    margin-top: 15px;
+    float: none;
+    display: flex;
+  }
+
+  .language-select-container[_ngcontent-ng-c1748080431][_ngcontent-ng-c1748080431]
+    select[_ngcontent-ng-c1748080431][_ngcontent-ng-c1748080431] {
+    width: 40%;
+    margin-bottom: 9px;
+  }
+}
+@media (max-width: 780px) {
+  .main {
+    width: 90%;
+  }
+  .greeting {
+    font-size: 24px;
+  }
+  .assistant-intro {
+    font-size: 16px;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+  .form-control {
+    padding: 10px;
+  }
+
+  .register-button {
+    width: 62%;
+  }
+
+  .registration-container,
+  .checkBox-title {
+    width: 70%;
+  }
+  .checkBox-title {
+    font-size: 13px;
+    width: 50%;
+  }
+  .custom-checkbox {
+    height: 16px;
+    width: 16px;
+  }
+  .container {
+    margin-top: -15%;
+  }
+  .imgBasma {
+    left: 30%;
+    bottom: 0;
+    height: 78%;
+  }
+  .form-title {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .form-title {
+    font-size: 16px;
+    width: 95%;
+  }
+  .form-control {
+    height: 35px;
+  }
+  .register-button {
+    width: 60%;
+  }
+}
+
+@media (max-width: 500px) {
+  .greeting-text {
+    margin-bottom: 10px;
+  }
+  .container {
+    width: 90%;
+    margin-inline: auto;
+  }
+  .form-title {
+    font-size: 16px;
+    width: 95%;
+  }
+  .form-control {
+    height: 35px;
+  }
+  .register-button {
+    width: 75%;
+    &.ar {
+      width: 55%;
+    }
+  }
+  .registration-container[_ngcontent-ng-c1748080431],
+  .checkBox-title[_ngcontent-ng-c1748080431] {
+    width: 45%;
+  }
+  .imgBasma.ar {
+    left: -43%;
+  }
+
+  .language-select-container[_ngcontent-ng-c1748080431]
+    select[_ngcontent-ng-c1748080431] {
+    padding: 3px 1px;
+    margin-bottom: 10px;
+  }
+  //
+  .registration-container {
+    flex-direction: column;
+  }
+  .checkBox-title {
+    width: 60%;
+    font-size: 12px;
+  }
+
+  .checkbox-container {
+    align-items: normal;
+  }
+  .imgBasma {
+    left: 33%;
+    bottom: 1%;
+    height: 76%;
+  }
+
+  .logo {
+    // margin-left: 30%;
+    margin-left: 63%;
+    margin-right: 8%;
+    margin-top: 5%;
+    &.ar {
+      margin-left: 70%;
+    }
+  }
+  .register-button.ar[_ngcontent-ng-c1748080431] {
+    width: 70%;
+  }
+}
+
+@media (max-width: 380px) {
+  .checkbox-container.rtl .checkBox-title {
+    order: 0;
+    width: fit-content;
+  }
+  .checkbox-container {
+    align-items: center;
+    margin-bottom: 9px;
+  }
+  .logo {
+    height: 49px;
+    margin-top: 3%;
+    &.ar {
+      margin-top: 3%;
+    }
+  }
+
+  .error01 {
+    width: 290px;
+  }
+  .checkbox-container {
+    width: 73%;
+  }
+  .imgBasma {
+    left: 100px;
+    bottom: 24px;
+    height: 70%;
+    &.ar {
+      left: -36%;
+      height: 63%;
+    }
+
+    .imgBasma {
+      &.ar {
+        left: -29%;
+        bottom: -21px;
+      }
+    }
+  }
+  .custom-checkbox {
+    height: 15px;
+    width: 15px;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .error {
+    width: 190px;
+    font-size: 12px;
+  }
+  .register-button {
+    width: 56%;
+  }
+
+  .imgBasma.ar {
+    left: -22%;
+    height: 65%;
+  }
+  .language-select-container {
+    display: none;
+  }
+  .language-select-container01 select {
+    display: block;
+    margin-top: 8px;
+    padding: 3px;
+  }
+
+  .register-button[_ngcontent-ng-c1378080944] {
+    width: 60%;
+  }
+  [dir="rtl"] .form-title {
+    font-size: 14px;
+    width: 100%;
+    text-align: end;
+  }
+}
+@media (max-width: 330px) {
+  .form-title {
+    // color: red;
+    font-size: 14px;
+    width: 95%;
+  }
+  .form-control {
+    height: 33px;
+  }
+  .register-button {
+    width: 75%;
+  }
+
+  .registration-container {
+    flex-direction: column;
+  }
+  .checkBox-title {
+    font-size: 12px;
+    width: fit-content;
+  }
+
+  .imgBasma {
+    left: 29%;
+    bottom: -130px;
+    height: 89vh;
+  }
+  .container {
+    width: 90%;
+  }
+}
+
+/* RTL adjustments */
+[dir="rtl"] .custom-checkbox {
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  // Checkbox on the left (default LTR)
+  input[type="checkbox"] {
+    order: 0;
+  }
+
+  &.rtl {
+    input[type="checkbox"] {
+      order: 2; // move it to the right
+    }
+
+    .custom-checkbox {
+      order: 1;
+    }
+
+    .checkBox-title {
+      order: 0;
+    }
+  }
+
+  .checkbox-container.rtl.checkBox-title {
+    order: 0;
+    width: fit-content !important;
+  }
+}
+
+.checkbox-container.rtl {
+  width: 73%;
+  order: 0;
+  align-items: normal;
+}
